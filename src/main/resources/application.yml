@@ -1,43 +1,15 @@
 spring:
-  config:
-    activate:
-      on-profile: local
   datasource:
-#    url: "jdbc:h2:mem:library;MODE=MYSQL;NON_KEYWORDS=USER"
-    url : "jdbc:mysql://localhost:3306/cap"
-    username: "root"
-    password: "root"
-    driver-class-name: com.mysql.cj.jdbc.Driver
-#    driver-class-name: org.h2.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
-#        dialect: org.hibernate.dialect.H2Dialect
-        dialect: org.hibernate.dialect.MySQL8Dialect
-
-#  h2:
-#    console:
-#      enabled: true
-#      path: /h2-console
----
-spring:
-  config:
-    activate:
-      on-profile: dev
-  datasource:
-    url: "jdbc:mysql://localhost/library"
-    username: "root"
-    password: "root"
+    url : jdbc:mysql://localhost:3306/cap?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: qkrtjdcns1!
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: none
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
-        dialect: org.hibernate.dialect.MySQL8Dialect
+      ddl-auto: create-drop
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    show-sql: true
+    database: mysql
+jwt:
+  secret: d27e4f31858693d551bf8eea2684be72aa5f0b08034536b3c6da823dfa4435bb230ade0805bf66594893475e8cd38a757865624aeeef94af08adf2ca6e8128cf

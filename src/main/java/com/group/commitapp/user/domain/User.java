@@ -25,6 +25,9 @@ public class User {
   @Setter
   private Integer age;
 
+  @Enumerated(value = EnumType.STRING)
+  private Role role;
+
   //그룹
 //  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY) //연관 관계의 주인이 아님을 명시
 //  private List<Group> groups = new ArrayList<>();
