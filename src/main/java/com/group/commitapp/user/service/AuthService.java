@@ -95,7 +95,7 @@ public class AuthService {
     }
 
     private User forceJoin(OAuthInfo oAuthInfo) {
-        User user = User.of(oAuthInfo.getUsername(), 25, oAuthInfo.getIdNumber());
+        User user = User.of(oAuthInfo.getUsername(), oAuthInfo.getIdNumber());
         return userRepository.save(user);
     }
 }

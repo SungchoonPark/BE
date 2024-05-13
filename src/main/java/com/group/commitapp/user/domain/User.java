@@ -22,23 +22,22 @@ public class User {
 
   private String name;
 
-  @Setter
-  private Integer age;
-
   private String providerId;
 
   @Enumerated(value = EnumType.STRING)
   private Role role;
 
-  private User(String name, Integer age, String providerId) {
+  private User(String name, String providerId) {
     this.name = name;
-    this.age = age;
     this.providerId = providerId;
     this.role = Role.ROLE_USER;
   }
 
-  public static User of(String name, Integer age, String providerId) {
-    return new User(name, age, providerId);
+  public static User of(String name, String providerId) {
+    if (name == null || name.isBlank()) {
+      throw new IllegalArgumentException(String.format("잘못된 name(%s)이 들어왔습니다", name));
+    }
+    return new User(name, providerId);
   }
 
   //그룹
@@ -54,14 +53,6 @@ public class User {
 
 //  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 //  private List<UserLoanHistory> userLoanHistories = new ArrayList<>();
-
-  public User(String name, Integer age) {
-    if (name == null || name.isBlank()) {
-      throw new IllegalArgumentException(String.format("잘못된 name(%s)이 들어왔습니다", name));
-    }
-    this.name = name;
-    this.age = age;
-  }
 
     public void updateName(String name) {
     this.name = name;
