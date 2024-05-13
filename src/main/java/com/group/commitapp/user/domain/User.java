@@ -25,8 +25,21 @@ public class User {
   @Setter
   private Integer age;
 
+  private String providerId;
+
   @Enumerated(value = EnumType.STRING)
   private Role role;
+
+  private User(String name, Integer age, String providerId) {
+    this.name = name;
+    this.age = age;
+    this.providerId = providerId;
+    this.role = Role.ROLE_USER;
+  }
+
+  public static User of(String name, Integer age, String providerId) {
+    return new User(name, age, providerId);
+  }
 
   //그룹
 //  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY) //연관 관계의 주인이 아님을 명시
